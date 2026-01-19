@@ -14,8 +14,14 @@ Feature: Login functionality
 
 
     @negative
-  Scenario: Failed login with wrong credentials
+  Scenario Outline: Failed login with invalid credentials
     Given I am on the login page
-    When I enter invalid password
-    Then I should see the error message
+    When I enter invalid "<username>" and "<password>"
+    Then I should see the "<error>" message
     And I should see the option Lost your password? option
+    Examples:
+        | username  | password | error |
+        | dorine_10 | 123      | The username dorine_10 is not registered on this site. If you are unsure of your username, try your email address instead. |
+        | dorine_08 | 12345    | The password you entered for the username dorine_08 is incorrect.                                                          |
+        |           | 123      | Username is required.                                                                                                      |
+        | dorine_08 |          | The password field is empty.                                                                                               |

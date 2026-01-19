@@ -32,10 +32,10 @@ public class LoginStepDefinition {
         driver.findElement(By.name("login")).click();
 
     }
-    @When("I enter invalid password")
-    public void i_enter_invalid_password(){
-        driver.findElement(By.id("username")).sendKeys("dorine_08");
-        driver.findElement(By.id("password")).sendKeys("12");
+    @When("I enter invalid {string} and {string}")
+    public void i_enter_invalid_password(String username, String password) {
+        driver.findElement(By.id("username")).sendKeys(username);
+        driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.name("login")).click();
 
     }
@@ -50,11 +50,11 @@ public class LoginStepDefinition {
         System.out.println(getUserName);
         //driver.findElement(By.linkText("Logout")).click();
     }
-    @Then("I should see the error message")
-    public void get_error_message(){
+    @Then("I should see the {string} message")
+    public void get_error_message(String error){
      wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("ul.woocommerce-error li")));
      String errorMessage = driver.findElement(By.cssSelector("ul.woocommerce-error li")).getText();
-     assertTrue(errorMessage.contains("The username Christophe is not registered on this site. If you are unsure of your username, try your email address instead."));
+     assertTrue(errorMessage.contains(error));
         System.out.println(errorMessage);
     }
     @And("I should see the option Lost your password? option")
