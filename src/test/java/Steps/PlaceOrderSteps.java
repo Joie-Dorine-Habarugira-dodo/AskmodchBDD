@@ -1,6 +1,7 @@
 package Steps;
 
 import Hooks.Hooks;
+import factory.DriverFactory;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -19,7 +20,7 @@ import java.util.Map;
 
 public class PlaceOrderSteps {
 
-   private final WebDriver driver = Hooks.driver;
+   private final WebDriver driver = DriverFactory.getDriver();
    private final ProceedToCheckOutSteps checkout = new ProceedToCheckOutSteps();
    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 

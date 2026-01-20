@@ -6,6 +6,6 @@ Feature: View cart
   Scenario: Successfully view products in the cart
     Given I have added a product to the cart
     When I hover over the shopping cart icon for seeing added products
-    When I click on the View cart button in cart preview
+    And I click on the View cart button in cart preview
     Then I am redirected to the cart page
     And the cart page displays product details

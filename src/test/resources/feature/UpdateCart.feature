@@ -3,12 +3,18 @@ Feature: Updating product in cart
   As a customer on AskM online shopping website
   I want to update the cart successfully
 
-  Scenario: Update product in cart successfully
-    Given I am on the cart page
-    When I increase or decrease the product quantity in cart
-    Then Product quantity in the cart should be updated
+  Background:
+    Given the cart is not empty
+    And customer is on the cart page
+
+  Scenario: increase product quantity in cart successfully
+    When customer increases the product quantity in cart
+    Then the product quantity in the cart should be increased
+
+  Scenario: decrease product quantity in cart successfully
+    When customer decreases the product quantity in cart
+    Then the product quantity in the cart should be decreased
 
   Scenario: Remove product successfully
-    Given I am on the cart page
-    When I remove a product from the cart
+    When customer removes a product from the cart
     Then the product should be removed from the cart

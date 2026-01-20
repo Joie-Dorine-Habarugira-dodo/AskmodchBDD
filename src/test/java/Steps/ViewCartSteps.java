@@ -1,6 +1,8 @@
 package Steps;
 
 import Hooks.Hooks;
+import factory.DriverFactory;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -9,12 +11,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
 public class ViewCartSteps {
-    private final WebDriver driver = Hooks.driver;
-
+    private final WebDriver driver = DriverFactory.getDriver();
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     @Given("I have added a product to the cart")
     public void i_have_added_a_product_to_the_cart() {
     driver.get("https://askomdch.com/store/");
@@ -36,7 +39,7 @@ public class ViewCartSteps {
 
     }
 
-    @When("I click on the View cart button in cart preview")
+    @And("I click on the View cart button in cart preview")
     public void i_click_on_the_link() {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         WebElement viewCartButton =  driver.findElement(By.cssSelector("a.button.wc-forward"));

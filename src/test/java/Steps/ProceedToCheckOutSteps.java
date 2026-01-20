@@ -1,6 +1,7 @@
 package Steps;
 
 import Hooks.Hooks;
+import factory.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class ProceedToCheckOutSteps {
-    private final WebDriver driver = Hooks.driver;
+    private final WebDriver driver = DriverFactory.getDriver();
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     protected LoginStepDefinition login = new LoginStepDefinition();
 

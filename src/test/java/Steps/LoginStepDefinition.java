@@ -1,6 +1,7 @@
 package Steps;
 
 import Hooks.Hooks;
+import factory.DriverFactory;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -16,7 +17,7 @@ import java.time.Duration;
 import static org.junit.Assert.assertTrue;
 
 public class LoginStepDefinition {
-    private final WebDriver driver = Hooks.driver;
+    private final WebDriver driver = DriverFactory.getDriver();
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     @Given("I am on the login page")
